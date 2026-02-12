@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Growth Tracker - Stream Haven</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="sidebar">
+    <h2>🌙 Stream Haven</h2>
+    <ul>
+        <li><a href="index.html">📊 Dashboard</a></li>
+        <li><a href="planner.html">📅 Stream Planner</a></li>
+        <li><a href="sims.html">👑 Sims Tracker</a></li>
+        <li><a href="ideas.html">💡 Idea Vault</a></li>
+        <li><a href="growth.html">📈 Growth</a></li>
+        <li><a href="settings.html">⚙️ Settings</a></li>
+    </ul>
+</nav>
+
+<main class="main-content">
+    <h1>📈 Growth Tracker</h1>
+
+    <div class="card">
+        <h3>Update Your Stats</h3>
+        <p style="color: var(--text-secondary); margin-bottom: 15px; font-size: 14px;">
+            Enter your current follower/subscriber counts. Leave blank to keep previous values.
+        </p>
+        <div class="input-group">
+            <input type="number" id="twitchInput" placeholder="Twitch Followers" min="0">
+            <input type="number" id="youtubeInput" placeholder="YouTube Subscribers" min="0">
+            <input type="number" id="tiktokInput" placeholder="TikTok Followers" min="0">
+        </div>
+        <button onclick="saveGrowth()">Save Stats</button>
+    </div>
+
+    <div class="card">
+        <h3>📊 Current Stats</h3>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-label">Twitch</div>
+                <div class="stat-value" id="twitchStat">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">YouTube</div>
+                <div class="stat-value" id="youtubeStat">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">TikTok</div>
+                <div class="stat-value" id="tiktokStat">0</div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="js/app.js"></script>
+</body>
+</html>

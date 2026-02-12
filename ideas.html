@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Idea Vault - Stream Haven</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="sidebar">
+    <h2>🌙 Stream Haven</h2>
+    <ul>
+        <li><a href="index.html">📊 Dashboard</a></li>
+        <li><a href="planner.html">📅 Stream Planner</a></li>
+        <li><a href="sims.html">👑 Sims Tracker</a></li>
+        <li><a href="ideas.html">💡 Idea Vault</a></li>
+        <li><a href="growth.html">📈 Growth</a></li>
+        <li><a href="settings.html">⚙️ Settings</a></li>
+    </ul>
+</nav>
+
+<main class="main-content">
+    <h1>💡 Content Ideas</h1>
+
+    <div class="card">
+        <h3>Add New Idea</h3>
+        <div class="form-row">
+            <input type="text" id="ideaInput" placeholder="Your brilliant content idea...">
+            <button onclick="addIdea()">Save Idea</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>💭 Your Ideas</h3>
+        <ul id="ideaList"></ul>
+    </div>
+</main>
+
+<script src="js/app.js"></script>
+</body>
+</html>

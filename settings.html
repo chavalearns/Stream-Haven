@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Stream Haven</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="sidebar">
+    <h2>🌙 Stream Haven</h2>
+    <ul>
+        <li><a href="index.html">📊 Dashboard</a></li>
+        <li><a href="planner.html">📅 Stream Planner</a></li>
+        <li><a href="sims.html">👑 Sims Tracker</a></li>
+        <li><a href="ideas.html">💡 Idea Vault</a></li>
+        <li><a href="growth.html">📈 Growth</a></li>
+        <li><a href="settings.html">⚙️ Settings</a></li>
+    </ul>
+</nav>
+
+<main class="main-content">
+    <h1>⚙️ Settings</h1>
+
+    <div class="card">
+        <h3>🎨 Appearance</h3>
+        <p style="color: var(--text-secondary); margin-bottom: 15px;">
+            Choose between dark and light themes for your Stream Haven.
+        </p>
+        <button onclick="toggleTheme()">Toggle Dark/Light Mode</button>
+    </div>
+
+    <div class="card">
+        <h3>💾 Data Management</h3>
+        <p style="color: var(--text-secondary); margin-bottom: 15px;">
+            Manage your Stream Haven data. Warning: These actions cannot be undone!
+        </p>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <button class="secondary" onclick="exportData()">Export Data</button>
+            <button class="danger" onclick="clearAllData()">Clear All Data</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>ℹ️ About</h3>
+        <p style="color: var(--text-secondary);">
+            <strong>Stream Haven</strong> - Your personal streaming companion<br>
+            Built with ❤️ for content creators
+        </p>
+    </div>
+</main>
+
+<script src="js/app.js"></script>
+<script>
+function exportData() {
+    const data = {
+        streams: localStorage.getItem("streams"),
+        goals: localStorage.getItem("goals"),
+        ideas: localStorage.getItem("ideas"),
+        twitch: localStorage.getItem("twitch"),
+        youtube: localStorage.getItem("youtube"),
+        tiktok: localStorage.getItem("tiktok"),
+        growthHistory: localStorage.getItem("growthHistory"),
+        theme: localStorage.getItem("theme")
+    };
+    
+    const dataStr = JSON.stringify(data, null, 2);
+    const dataBlob = new Blob([dataStr], { type: 'application/json' });
+    const url = URL.createObjectURL(dataBlob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `stream-haven-backup-${new Date().toISOString().split('T')[0]}.json`;
+    link.click();
+    
+    showNotification('Data exported successfully!');
+}
+
+function clearAllData() {
+    if (confirm('Are you sure you want to clear ALL data? This cannot be undone!')) {
+        if (confirm('Really sure? All your streams, goals, ideas, and stats will be deleted!')) {
+            localStorage.clear();
+            showNotification('All data cleared', 'error');
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 1500);
+        }
+    }
+}
+</script>
+</body>
+</html>
